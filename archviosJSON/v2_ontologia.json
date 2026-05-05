@@ -1,0 +1,45 @@
+{
+  "clases": {
+    "Agent": "Un agente que ejecuta código",
+    "CodeExecutor": "Una herramienta utilizada por el agente para ejecutar código",
+    "Tool": "Una herramienta general que puede ser utilizada por varios agentes",
+    "LLM": "Un Lenguaje de Lógica Matemática que recupera información de la memoria externa",
+    "ConversationHistory": "El historial de conversación almacenado en la memoria externa",
+    "MemoryExternal": "La memoria externa donde se almacena el historial de conversación",
+    "StorageDevice": "Un dispositivo de almacenamiento que puede ser utilizado como memoria externa"
+  },
+  "relaciones_objeto": [
+    {
+      "sujeto": "Agent",
+      "predicado": "usa",
+      "objeto": "CodeExecutor"
+    },
+    {
+      "sujeto": "LLM",
+      "predicado": "recupera",
+      "objeto": "ConversationHistory"
+    },
+    {
+      "sujeto": "CodeExecutor",
+      "predicado": "esInstanciaDe",
+      "objeto": "Tool"
+    }
+  ],
+  "restricciones": [
+    {
+      "type": "subClassOf",
+      "class": "CodeExecutor",
+      "subclass": "Tool"
+    },
+    {
+      "type": "partOf",
+      "class": "MemoryExternal",
+      "part": "StorageDevice"
+    },
+    {
+      "type": "subClassOf",
+      "class": "Agent",
+      "subclass": "IntelligentEntity"
+    }
+  ]
+}
