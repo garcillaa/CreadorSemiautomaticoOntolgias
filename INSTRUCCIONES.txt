@@ -1,0 +1,64 @@
+================================================================================
+PASOS PARA USAR EL PROGRAMA
+================================================================================
+
+
+1. CLONAR EL REPOSITORIO
+------------------------
+   git clone <url-del-repo>
+   cd ontologiaSemiautomatica
+
+
+2. INSTALAR OLLAMA Y DESCARGAR EL MODELO
+----------------------------------------
+   - Instalar Ollama desde https://ollama.com
+   - Descargar el modelo:
+       ollama pull llama3
+
+
+3. CREAR ENTORNO VIRTUAL E INSTALAR DEPENDENCIAS
+------------------------------------------------
+   python -m venv .venv
+   .venv\Scripts\activate
+   pip install -r requirements.txt
+
+
+4. EJECUTAR EL PROGRAMA
+-----------------------
+   python main.py
+
+
+5. INTRODUCIR LA CONFIGURACION CUANDO LO PIDA
+---------------------------------------------
+   - Dominio (ej: "gestion de un taller mecanico")
+   - Objetivo (descripcion de que quieres modelar)
+   - Preguntas de competencia (una por linea, escribir "fin" al terminar)
+
+
+6. ITERAR HASTA TENER UNA ONTOLOGIA SATISFACTORIA
+-------------------------------------------------
+   Tras cada generacion se muestra la ontologia y su evaluacion. Pulsar:
+   - r + feedback  -> refinar la ontologia con tus indicaciones
+   - a             -> aceptar como version final
+   - v             -> ver el JSON completo
+   - q             -> salir sin guardar version final
+
+
+7. RECOGER LOS FICHEROS GENERADOS
+---------------------------------
+   En output/<dominio>_<timestamp>/ encontraras:
+   - ontologia_final.owl       -> para abrir en Protege
+   - ontologia_final.ttl       -> ontologia en formato Turtle
+   - consultas_protege.sparql  -> consultas listas para copiar
+   - session_log.json          -> trazabilidad de la sesion
+
+
+8. ABRIR LA ONTOLOGIA EN PROTEGE
+--------------------------------
+   - File > Open -> seleccionar ontologia_final.owl
+   - Reasoner > HermiT > Start reasoner (aplica reglas SWRL)
+   - Window > Tabs > SPARQL Query
+   - Pegar y ejecutar las consultas del fichero consultas_protege.sparql
+
+
+================================================================================

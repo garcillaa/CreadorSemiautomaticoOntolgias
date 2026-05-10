@@ -1,0 +1,136 @@
+{
+  "estructural": {
+    "num_clases": 5,
+    "num_object_properties": 2,
+    "num_datatype_properties": 2,
+    "num_restricciones": 2,
+    "num_instancias": 3,
+    "num_reglas_swrl": 4,
+    "tiene_jerarquia": true,
+    "tiene_disjuntas": true,
+    "tiene_inversas": true,
+    "clases_aisladas": [
+      "Empleado",
+      "Taller"
+    ]
+  },
+  "semantica": {
+    "evaluaciones": [
+      {
+        "pregunta": "¿qué mecanico ha arreglado un coche con matricula especifica?",
+        "resuelta": true,
+        "clases_necesarias": [
+          "Mecanico",
+          "Coche"
+        ],
+        "clases_presentes": [
+          "Mecanico",
+          "Coche"
+        ],
+        "clases_faltantes": [],
+        "propiedades_necesarias": [
+          "arregla",
+          "placa"
+        ],
+        "propiedades_presentes": [
+          "arregla",
+          "placa"
+        ],
+        "propiedades_faltantes": [],
+        "conexiones": [
+          "arregla: Mecanico -> Coche",
+          "placa: Coche -> xsd:string"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "Resuelta. Camino: arregla: Mecanico -> Coche + placa: Coche -> xsd:string",
+        "sparql": "PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nSELECT ?mecanico ?coche ?val_placa\nWHERE {\n  ?mecanico rdf:type ont:Mecanico .\n  ?coche rdf:type ont:Coche .\n  ?mecanico ont:arregla ?coche .\n  ?coche ont:placa ?val_placa .\n}"
+      },
+      {
+        "pregunta": "¿de quienes son los coches que ha arreglado un mecanico especifico?",
+        "resuelta": true,
+        "clases_necesarias": [
+          "Mecanico",
+          "Coche"
+        ],
+        "clases_presentes": [
+          "Mecanico",
+          "Coche"
+        ],
+        "clases_faltantes": [],
+        "propiedades_necesarias": [
+          "arregla"
+        ],
+        "propiedades_presentes": [
+          "arregla"
+        ],
+        "propiedades_faltantes": [],
+        "conexiones": [
+          "arregla: Mecanico -> Coche"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "Resuelta. Camino: arregla: Mecanico -> Coche",
+        "sparql": "PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nSELECT ?mecanico ?coche\nWHERE {\n  ?mecanico rdf:type ont:Mecanico .\n  ?coche rdf:type ont:Coche .\n  ?mecanico ont:arregla ?coche .\n}"
+      },
+      {
+        "pregunta": "¿que mecanicos trabajan en el taller?",
+        "resuelta": false,
+        "clases_necesarias": [
+          "Mecanico",
+          "Taller"
+        ],
+        "clases_presentes": [
+          "Mecanico",
+          "Taller"
+        ],
+        "clases_faltantes": [],
+        "propiedades_necesarias": [
+          "trabaja_en"
+        ],
+        "propiedades_presentes": [],
+        "propiedades_faltantes": [
+          "trabaja_en"
+        ],
+        "conexiones": [],
+        "elementos_faltantes": [
+          "Propiedad: trabaja_en"
+        ],
+        "justificacion": "No resuelta. Falta: Propiedad: trabaja_en",
+        "sparql": ""
+      },
+      {
+        "pregunta": "¿cuantos coches ha arreglado el taller (es decir, todos los coches que han arreglado todos los mecanicos)?",
+        "resuelta": true,
+        "clases_necesarias": [
+          "Mecanico",
+          "Coche",
+          "Taller"
+        ],
+        "clases_presentes": [
+          "Mecanico",
+          "Coche",
+          "Taller"
+        ],
+        "clases_faltantes": [],
+        "propiedades_necesarias": [
+          "arregla",
+          "placa"
+        ],
+        "propiedades_presentes": [
+          "arregla",
+          "placa"
+        ],
+        "propiedades_faltantes": [],
+        "conexiones": [
+          "arregla: Mecanico -> Coche",
+          "placa: Coche -> xsd:string"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "Resuelta. Camino: arregla: Mecanico -> Coche + placa: Coche -> xsd:string",
+        "sparql": "PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nSELECT ?mecanico ?coche ?taller ?val_placa\nWHERE {\n  ?mecanico rdf:type ont:Mecanico .\n  ?coche rdf:type ont:Coche .\n  ?taller rdf:type ont:Taller .\n  ?mecanico ont:arregla ?coche .\n  ?coche ont:placa ?val_placa .\n}"
+      }
+    ],
+    "puntuacion_global": 0.75,
+    "resumen": "3/4 preguntas resueltas."
+  },
+  "puntuacion_competencia": 0.75
+}

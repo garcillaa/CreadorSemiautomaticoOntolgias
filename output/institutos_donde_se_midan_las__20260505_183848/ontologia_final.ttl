@@ -1,0 +1,151 @@
+@prefix ont: <http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes> a owl:Ontology ;
+    rdfs:label "Ontología: institutos donde se midan las relaciones entre profesores, clases, alumnos y examenes" .
+
+ont:Alumno-ExamenIndividual1 a ont:Alumno-ExamenIndividual,
+        owl:NamedIndividual ;
+    ont:alumno "Alumno1" ;
+    ont:examen_individual "ExamenIndividual1" .
+
+ont:Alumno1 a ont:Alumno,
+        owl:NamedIndividual ;
+    ont:fecha_nacimiento "1990-01-01T00:00:00.000Z" ;
+    ont:nombre "Pepe" .
+
+ont:Clase-Profesor1 a ont:Profesor-Clase,
+        owl:NamedIndividual ;
+    ont:clase "Clase1" ;
+    ont:profesor "Profesor1" .
+
+ont:Clase1 a ont:Clase,
+        owl:NamedIndividual .
+
+ont:Departamento1 a ont:Departamento,
+        owl:NamedIndividual .
+
+ont:ExamenIndividual1 a ont:ExamenIndividual,
+        owl:NamedIndividual ;
+    ont:nota 8 .
+
+ont:ExamenPrototipo1 a ont:ExamenPrototipo,
+        owl:NamedIndividual .
+
+ont:Instituto1 a ont:Instituto,
+        owl:NamedIndividual .
+
+ont:Profesor-Alumno1 a ont:Alumno-Clase,
+        owl:NamedIndividual ;
+    ont:alumno "Alumno1" ;
+    ont:clase "Clase1" .
+
+ont:Profesor1 a ont:Profesor,
+        owl:NamedIndividual ;
+    ont:nombre "Juan" .
+
+ont:asiste a owl:ObjectProperty ;
+    rdfs:comment "Un alumno asiste a una clase" ;
+    rdfs:domain ont:Alumno ;
+    rdfs:range ont:Clase .
+
+ont:ensena a owl:ObjectProperty ;
+    rdfs:comment "Un profesor enseña una clase" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:Clase .
+
+ont:ensena_a a owl:ObjectProperty ;
+    rdfs:comment "Un profesor enseña a un alumno" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:Alumno .
+
+ont:evalua a owl:ObjectProperty ;
+    rdfs:comment "Un profesor evalúa un examen individual" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:ExamenIndividual .
+
+ont:fecha_nacimiento a owl:DatatypeProperty ;
+    rdfs:comment "Fecha de nacimiento de un alumno" ;
+    rdfs:domain ont:Alumno ;
+    rdfs:range xsd:dateTime .
+
+ont:ha_tomado a owl:ObjectProperty ;
+    rdfs:comment "Un alumno ha tomado un examen individual" ;
+    rdfs:domain ont:Alumno ;
+    rdfs:range ont:ExamenIndividual .
+
+ont:nombre a owl:DatatypeProperty ;
+    rdfs:comment "Nombre de una persona" ;
+    rdfs:range xsd:string .
+
+ont:realiza a owl:ObjectProperty ;
+    rdfs:comment "Un profesor realiza un examen prototipo" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:ExamenPrototipo .
+
+ont:toma a owl:ObjectProperty ;
+    rdfs:comment "Un alumno toma un examen individual" ;
+    rdfs:domain ont:Alumno ;
+    rdfs:range ont:ExamenIndividual .
+
+ont:Alumno-Clase a owl:Class ;
+    rdfs:comment "Relación entre un alumno y una clase" .
+
+ont:Alumno-ExamenIndividual a owl:Class ;
+    rdfs:comment "Relación entre un alumno y un examen individual" .
+
+ont:Profesor-Clase a owl:Class ;
+    rdfs:comment "Relación entre un profesor y una clase" .
+
+ont:asiste_a a owl:ObjectProperty ;
+    rdfs:comment "Un alumno asiste a una clase" ;
+    rdfs:domain ont:Alumno ;
+    rdfs:range ont:Clase .
+
+ont:imparte a owl:ObjectProperty ;
+    rdfs:comment "Un profesor imparte una clase" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:Clase .
+
+ont:realiza_para a owl:ObjectProperty ;
+    rdfs:comment "Un profesor realiza un examen prototipo para un alumno" ;
+    rdfs:domain ont:Profesor ;
+    rdfs:range ont:ExamenPrototipo .
+
+ont:Instituto a owl:Class ;
+    rdfs:comment "Entidad que agrupa a varios departamentos" .
+
+ont:Departamento a owl:Class ;
+    rdfs:comment "Unidad académica que imparte educación" ;
+    rdfs:subClassOf ont:Instituto .
+
+ont:ExamenIndividual a owl:Class ;
+    rdfs:comment "Evaluación académica realizada a un alumno" ;
+    rdfs:subClassOf ont:ExamenPrototipo .
+
+ont:ExamenPrototipo a owl:Class ;
+    rdfs:comment "Evaluación académica realizada a los alumnos" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue "Alumno" ;
+            owl:onProperty ont:realiza_para ] .
+
+ont:Alumno a owl:Class ;
+    rdfs:comment "Persona que recibe educación" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ont:asiste_a ;
+            owl:someValuesFrom ont:Clase ],
+        ont:Departamento .
+
+ont:Clase a owl:Class ;
+    rdfs:comment "Unidad de aprendizaje impartida por un profesor" ;
+    rdfs:subClassOf ont:Departamento .
+
+ont:Profesor a owl:Class ;
+    rdfs:comment "Persona encargada de impartir educación" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ont:imparte ;
+            owl:someValuesFrom ont:Clase ],
+        ont:Departamento .
+

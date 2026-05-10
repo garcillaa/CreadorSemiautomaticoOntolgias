@@ -1,0 +1,227 @@
+{
+  "clases": {
+    "Instituto": {
+      "definicion": "Entidad que agrupa a varios departamentos",
+      "superclase": null
+    },
+    "Departamento": {
+      "definicion": "Unidad académica que imparte educación",
+      "superclase": "Instituto"
+    },
+    "Profesor": {
+      "definicion": "Persona encargada de impartir educación",
+      "superclase": "Departamento"
+    },
+    "Alumno": {
+      "definicion": "Persona que recibe educación",
+      "superclase": "Departamento"
+    },
+    "Clase": {
+      "definicion": "Unidad de aprendizaje impartida por un profesor",
+      "superclase": "Departamento"
+    },
+    "ExamenPrototipo": {
+      "definicion": "Evaluación académica realizada a los alumnos",
+      "superclase": null,
+      "propiedades": {
+        "nota": {
+          "nombre": "nota",
+          "dominio": "ExamenPrototipo",
+          "rango": "xsd:integer",
+          "descripcion": "Nota del examen"
+        }
+      }
+    },
+    "ExamenIndividual": {
+      "definicion": "Evaluación académica realizada a un alumno",
+      "superclase": "ExamenPrototipo",
+      "propiedades": {
+        "nota": {
+          "nombre": "nota",
+          "dominio": "ExamenIndividual",
+          "rango": "xsd:integer",
+          "descripcion": "Nota del examen"
+        }
+      }
+    },
+    "Alumno-Clase": {
+      "definicion": "Relación entre un alumno y una clase",
+      "superclase": null
+    },
+    "Profesor-Clase": {
+      "definicion": "Relación entre un profesor y una clase",
+      "superclase": null
+    },
+    "Alumno-ExamenIndividual": {
+      "definicion": "Relación entre un alumno y un examen individual",
+      "superclase": null
+    }
+  },
+  "object_properties": [
+    {
+      "nombre": "imparte",
+      "dominio": "Profesor",
+      "rango": "Clase",
+      "descripcion": "Un profesor imparte una clase"
+    },
+    {
+      "nombre": "asiste",
+      "dominio": "Alumno",
+      "rango": "Clase",
+      "descripcion": "Un alumno asiste a una clase"
+    },
+    {
+      "nombre": "realiza",
+      "dominio": "Profesor",
+      "rango": "ExamenPrototipo",
+      "descripcion": "Un profesor realiza un examen prototipo"
+    },
+    {
+      "nombre": "toma",
+      "dominio": "Alumno",
+      "rango": "ExamenIndividual",
+      "descripcion": "Un alumno toma un examen individual"
+    },
+    {
+      "nombre": "enseña",
+      "dominio": "Profesor",
+      "rango": "Clase",
+      "descripcion": "Un profesor enseña una clase"
+    },
+    {
+      "nombre": "evalúa",
+      "dominio": "Profesor",
+      "rango": "ExamenIndividual",
+      "descripcion": "Un profesor evalúa un examen individual"
+    },
+    {
+      "nombre": "ha_tomado",
+      "dominio": "Alumno",
+      "rango": "ExamenIndividual",
+      "descripcion": "Un alumno ha tomado un examen individual"
+    },
+    {
+      "nombre": "enseña_a",
+      "dominio": "Profesor",
+      "rango": "Alumno",
+      "descripcion": "Un profesor enseña a un alumno"
+    },
+    {
+      "nombre": "asiste_a",
+      "dominio": "Alumno",
+      "rango": "Clase",
+      "descripcion": "Un alumno asiste a una clase"
+    },
+    {
+      "nombre": "realiza_para",
+      "dominio": "Profesor",
+      "rango": "ExamenPrototipo",
+      "descripcion": "Un profesor realiza un examen prototipo para un alumno"
+    }
+  ],
+  "datatype_properties": [
+    {
+      "nombre": "nombre",
+      "dominio": "Profesor | Alumno",
+      "rango": "xsd:string",
+      "descripcion": "Nombre de una persona"
+    },
+    {
+      "nombre": "fecha_nacimiento",
+      "dominio": "Alumno",
+      "rango": "xsd:dateTime",
+      "descripcion": "Fecha de nacimiento de un alumno"
+    }
+  ],
+  "restricciones": [
+    {
+      "clase": "Profesor",
+      "tipo": "someValuesFrom",
+      "propiedad": "imparte",
+      "valor": "Clase",
+      "descripcion": "Un profesor imparte una o varias clases"
+    },
+    {
+      "clase": "Alumno",
+      "tipo": "someValuesFrom",
+      "propiedad": "asiste_a",
+      "valor": "Clase",
+      "descripcion": "Un alumno asiste a una o varias clases"
+    },
+    {
+      "clase": "ExamenPrototipo",
+      "tipo": "hasValue",
+      "propiedad": "realiza_para",
+      "valor": "Alumno",
+      "descripcion": "Un examen prototipo es realizado para un alumno"
+    }
+  ],
+  "instancias_ejemplo": [
+    {
+      "nombre": "Instituto1",
+      "clase": "Instituto",
+      "propiedades": {}
+    },
+    {
+      "nombre": "Departamento1",
+      "clase": "Departamento",
+      "propiedades": {}
+    },
+    {
+      "nombre": "Profesor1",
+      "clase": "Profesor",
+      "propiedades": {
+        "nombre": "Juan"
+      }
+    },
+    {
+      "nombre": "Alumno1",
+      "clase": "Alumno",
+      "propiedades": {
+        "nombre": "Pepe",
+        "fecha_nacimiento": "1990-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "nombre": "Clase1",
+      "clase": "Clase",
+      "propiedades": {}
+    },
+    {
+      "nombre": "ExamenPrototipo1",
+      "clase": "ExamenPrototipo",
+      "propiedades": {}
+    },
+    {
+      "nombre": "ExamenIndividual1",
+      "clase": "ExamenIndividual",
+      "propiedades": {
+        "nota": 8
+      }
+    },
+    {
+      "nombre": "Profesor-Alumno1",
+      "clase": "Alumno-Clase",
+      "propiedades": {
+        "alumno": "Alumno1",
+        "clase": "Clase1"
+      }
+    },
+    {
+      "nombre": "Clase-Profesor1",
+      "clase": "Profesor-Clase",
+      "propiedades": {
+        "profesor": "Profesor1",
+        "clase": "Clase1"
+      }
+    },
+    {
+      "nombre": "Alumno-ExamenIndividual1",
+      "clase": "Alumno-ExamenIndividual",
+      "propiedades": {
+        "alumno": "Alumno1",
+        "examen_individual": "ExamenIndividual1"
+      }
+    }
+  ]
+}

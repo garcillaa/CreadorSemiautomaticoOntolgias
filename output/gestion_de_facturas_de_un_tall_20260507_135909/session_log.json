@@ -1,0 +1,25 @@
+{
+  "dominio": "gestion de facturas de un taller de mecanica",
+  "objetivo": "controlar a los clientes, mecanicos que trabajan y los coches de cada cliente que arregla cada mecanico a traves de facturas que almancena el taller y que recibe el cliente. En las facutuas aparecera placa del coche, nombre del cliente, nombre del mecanico, nombre del taller y fecha del arreglo",
+  "preguntas_competencia": [
+    "¿qué mecanico ha arreglado un coche con matricula especifica?",
+    "¿de quienes son los coches que ha arreglado un mecanico especifico?",
+    "¿que mecanicos trabajan en el taller?",
+    "¿cuantos coches ha arreglado el taller (es decir, todos los coches que han arreglado todos los mecanicos)?"
+  ],
+  "iteraciones": [
+    {
+      "version": 1,
+      "feedback_entrada": null,
+      "puntuacion": 0.75,
+      "decision": "refinar",
+      "feedback_salida": "has creado una property para una clase que no existe: Factura. Crea la clase, sus relaciones y declara una instancia al menos."
+    },
+    {
+      "version": 2,
+      "feedback_entrada": "has creado una property para una clase que no existe: Factura. Crea la clase, sus relaciones y declara una instancia al menos.",
+      "puntuacion": 0.75,
+      "decision": "aceptada"
+    }
+  ]
+}

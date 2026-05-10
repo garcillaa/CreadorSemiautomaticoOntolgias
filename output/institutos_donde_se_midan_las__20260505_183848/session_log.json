@@ -1,0 +1,56 @@
+{
+  "dominio": "institutos donde se midan las relaciones entre profesores, clases, alumnos y examenes",
+  "objetivo": "el objetivo es llevar un registro de los exámenes que hace cada alumno y con qué profesor para llevar un control académico. También saber los alumnos que pertenecen a cada clase y por tanto a que alumnos imparte cada profesor para comparar el redimiento de los alumnos con el trabajo de los profesores y comprobar la eficiencia en el aprendizaje de los niños y en la enseñanza de los maestros",
+  "preguntas_competencia": [
+    "¿Cuántos profesores imparten en una clase?",
+    "¿Cuántos alumnos hay en una clase?",
+    "¿Qué examenes ha hecho un alumno con un profesor específico?",
+    "¿Qué notas ha sacado de media la clase con un profesor en específico?",
+    "¿A que instituto pertenece un alumno?",
+    "¿Cuántas clases hay en un instituto?",
+    "¿Pueden dos profesores impartir a diferentes clases?"
+  ],
+  "iteraciones": [
+    {
+      "version": 1,
+      "feedback_entrada": null,
+      "puntuacion": 0.6,
+      "decision": "refinar",
+      "feedback_salida": "Una relación entre un examen y un profesor-alumno que permita relacionar los examenes con los profesores y alumnos y Una relación entre una clase y un profesor que permita relacionar las notas con los profesores y clases"
+    },
+    {
+      "version": 2,
+      "feedback_entrada": "Una relación entre un examen y un profesor-alumno que permita relacionar los examenes con los profesores y alumnos y Una relación entre una clase y un profesor que permita relacionar las notas con los profesores y clases",
+      "puntuacion": 0.6,
+      "decision": "refinar",
+      "feedback_salida": "Una relación entre Alumno y Examen para representar que un alumno ha tomado un examen y un atributo nota para la clase Examen, el examen debe de tener una relacion con el alumno que lo ha hecho y el profesor que lo ha puesto. Así cuando se pregunte por la nota de un examén de un alumno se dará el atributo nota del examen"
+    },
+    {
+      "version": 3,
+      "feedback_entrada": "Una relación entre Alumno y Examen para representar que un alumno ha tomado un examen y un atributo nota para la clase Examen, el examen debe de tener una relacion con el alumno que lo ha hecho y el profesor que lo ha puesto. Así cuando se pregunte por la nota de un examén de un alumno se dará el atributo nota del examen",
+      "puntuacion": 0.6,
+      "decision": "refinar",
+      "feedback_salida": "para resolver la pregunta \"¿Qué examenes ha hecho un alumno con un profesor específico?\" falta la propiedad 'ha_tomado' no está relacionada con el profesor. Además, para resolver la pregunta \"¿Qué notas ha sacado de media la clase con un profesor en específico?\" falta la relación entre la clase y el profesor no está definida"
+    },
+    {
+      "version": 4,
+      "feedback_entrada": "para resolver la pregunta \"¿Qué examenes ha hecho un alumno con un profesor específico?\" falta la propiedad 'ha_tomado' no está relacionada con el profesor. Además, para resolver la pregunta \"¿Qué notas ha sacado de media la clase con un profesor en específico?\" falta la relación entre la clase y el profesor no está definida",
+      "puntuacion": 0.6,
+      "decision": "refinar",
+      "feedback_salida": "añade la relacion entre alumno y examen y entre profesor y clase"
+    },
+    {
+      "version": 5,
+      "feedback_entrada": "añade la relacion entre alumno y examen y entre profesor y clase",
+      "puntuacion": 0.6,
+      "decision": "refinar",
+      "feedback_salida": "un profesor puede impartir diferentes clases y una clase puede ser impartida por diferentes profesores. Hay que transformar Examen de esta manera: Examen pasará a ser ExamenPrototipo y heredará ExamenIndividual. De esta manera unúnico profesor pone un ExamenPrototipo y por cada ExamenPrototipo habrá tantos ExamenesIndividual como alumnos hay en la clase que esta dando ese profesor. Estas nuevas clases tendrán ambas el datatype de \"nota\" para conocer la nota de cada examen inidividual"
+    },
+    {
+      "version": 6,
+      "feedback_entrada": "un profesor puede impartir diferentes clases y una clase puede ser impartida por diferentes profesores. Hay que transformar Examen de esta manera: Examen pasará a ser ExamenPrototipo y heredará ExamenIndividual. De esta manera unúnico profesor pone un ExamenPrototipo y por cada ExamenPrototipo habrá tantos ExamenesIndividual como alumnos hay en la clase que esta dando ese profesor. Estas nuevas clases tendrán ambas el datatype de \"nota\" para conocer la nota de cada examen inidividual",
+      "puntuacion": 0.6,
+      "decision": "aceptada"
+    }
+  ]
+}

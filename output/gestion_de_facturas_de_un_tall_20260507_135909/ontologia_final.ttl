@@ -1,0 +1,189 @@
+@prefix ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica> a owl:Ontology ;
+    rdfs:label "Ontología: gestion de facturas de un taller de mecanica" .
+
+ont:factura1 a ont:Factura,
+        owl:NamedIndividual ;
+    ont:facturaDe ont:juan ;
+    ont:facturaPara ont:maria ;
+    ont:fechaArreglo "2022-01-01T00:00:00.000Z" .
+
+ont:factura2 a ont:Factura,
+        owl:NamedIndividual ;
+    ont:facturaDe ont:pedro ;
+    ont:facturaPara ont:maria ;
+    ont:fechaArreglo "2022-01-02T00:00:00.000Z" .
+
+ont:fechaArreglo a owl:DatatypeProperty ;
+    rdfs:comment "Fecha de arreglo" ;
+    rdfs:domain ont:Factura ;
+    rdfs:range xsd:dateTime .
+
+ont:placa a owl:DatatypeProperty ;
+    rdfs:comment "Placa del coche" ;
+    rdfs:domain ont:Coche ;
+    rdfs:range xsd:string .
+
+ont:facturaDe a owl:ObjectProperty ;
+    rdfs:comment "Relación entre una factura y el mecanico que la emitió" ;
+    rdfs:domain ont:Factura ;
+    rdfs:range ont:Mecanico ;
+    owl:inverseOf ont:emite .
+
+ont:facturaPara a owl:ObjectProperty ;
+    rdfs:comment "Relación entre una factura y el cliente que la recibe" ;
+    rdfs:domain ont:Factura ;
+    rdfs:range ont:Cliente ;
+    owl:inverseOf ont:recibe .
+
+ont:juan a ont:Mecanico,
+        owl:NamedIndividual ;
+    ont:nombre "Juan" .
+
+ont:pedro a ont:Mecanico,
+        owl:NamedIndividual ;
+    ont:nombre "Pedro" .
+
+ont:arregla a owl:ObjectProperty ;
+    rdfs:comment "Relación entre un mecanico y el coche que arregla" ;
+    rdfs:domain ont:Mecanico ;
+    rdfs:range ont:Coche ;
+    owl:inverseOf ont:esArregladoPor .
+
+ont:emite a owl:ObjectProperty ;
+    rdfs:domain ont:Mecanico ;
+    rdfs:range ont:Factura .
+
+ont:esArregladoPor a owl:ObjectProperty ;
+    rdfs:domain ont:Coche ;
+    rdfs:range ont:Mecanico .
+
+ont:esPoseidoPor a owl:ObjectProperty ;
+    rdfs:domain ont:Coche ;
+    rdfs:range ont:Cliente .
+
+ont:maria a ont:Cliente,
+        owl:NamedIndividual ;
+    ont:nombre "Maria" ;
+    ont:posee "['coche1', 'coche2']" .
+
+ont:posee a owl:ObjectProperty ;
+    rdfs:comment "Relación entre un cliente y el coche que posee" ;
+    rdfs:domain ont:Cliente ;
+    rdfs:range ont:Coche ;
+    owl:inverseOf ont:esPoseidoPor .
+
+ont:recibe a owl:ObjectProperty ;
+    rdfs:domain ont:Cliente ;
+    rdfs:range ont:Factura .
+
+ont:Empleado a owl:Class ;
+    rdfs:comment "Persona que trabaja en el taller" ;
+    owl:disjointWith ont:Factura,
+        ont:Taller .
+
+ont:Taller a owl:Class ;
+    rdfs:comment "Lugar donde se realizan reparaciones" .
+
+ont:Cliente a owl:Class ;
+    rdfs:comment "Persona que contrata servicios" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ont:posee ;
+            owl:someValuesFrom ont:Coche ] ;
+    owl:disjointWith ont:Coche,
+        ont:Empleado,
+        ont:Factura,
+        ont:Mecanico,
+        ont:Taller .
+
+ont:Mecanico a owl:Class ;
+    rdfs:comment "Persona que realiza reparaciones" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty ont:arregla ;
+            owl:someValuesFrom ont:Coche ],
+        ont:Empleado .
+
+ont:Coche a owl:Class ;
+    rdfs:comment "Vehículo que requiere reparación" ;
+    owl:disjointWith ont:Empleado,
+        ont:Factura,
+        ont:Taller .
+
+ont:var_x a swrl:Variable .
+
+ont:var_y a swrl:Variable .
+
+ont:Factura a owl:Class ;
+    rdfs:comment "Documento que registra una transacción" ;
+    owl:disjointWith ont:Taller .
+
+[] a swrl:Imp ;
+    rdfs:label "auto_inv_posee" ;
+    rdfs:comment "Inferencia automática: posee implica su inversa esPoseidoPor" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_x ;
+                    swrl:argument2 ont:var_y ;
+                    swrl:propertyPredicate ont:posee ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_y ;
+                    swrl:argument2 ont:var_x ;
+                    swrl:propertyPredicate ont:esPoseidoPor ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "auto_inv_facturaDe" ;
+    rdfs:comment "Inferencia automática: facturaDe implica su inversa emite" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_x ;
+                    swrl:argument2 ont:var_y ;
+                    swrl:propertyPredicate ont:facturaDe ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_y ;
+                    swrl:argument2 ont:var_x ;
+                    swrl:propertyPredicate ont:emite ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "auto_inv_arregla" ;
+    rdfs:comment "Inferencia automática: arregla implica su inversa esArregladoPor" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_x ;
+                    swrl:argument2 ont:var_y ;
+                    swrl:propertyPredicate ont:arregla ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_y ;
+                    swrl:argument2 ont:var_x ;
+                    swrl:propertyPredicate ont:esArregladoPor ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "auto_inv_facturaPara" ;
+    rdfs:comment "Inferencia automática: facturaPara implica su inversa recibe" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_x ;
+                    swrl:argument2 ont:var_y ;
+                    swrl:propertyPredicate ont:facturaPara ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 ont:var_y ;
+                    swrl:argument2 ont:var_x ;
+                    swrl:propertyPredicate ont:recibe ] ;
+            rdf:rest () ] .
+

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ont="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nombre>Pepe</ont:nombre>
+    <ont:fecha_nacimiento>1990-01-01T00:00:00.000Z</ont:fecha_nacimiento>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Unidad de aprendizaje impartida por un profesor</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#evalua">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor evalúa un examen individual</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#toma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un alumno toma un examen individual</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#realiza">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor realiza un examen prototipo</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ensena_a">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor enseña a un alumno</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Persona que recibe educación</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento"/>
+    <rdfs:subClassOf rdf:nodeID="N06387082f7bc4495a50fc929b8df4fce"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#imparte">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor imparte una clase</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#asiste_a">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un alumno asiste a una clase</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno-ExamenIndividual1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno-ExamenIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:alumno>Alumno1</ont:alumno>
+    <ont:examen_individual>ExamenIndividual1</ont:examen_individual>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nota rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</ont:nota>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor-Alumno1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno-Clase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:alumno>Alumno1</ont:alumno>
+    <ont:clase>Clase1</ont:clase>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#realiza_para">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor realiza un examen prototipo para un alumno</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Evaluación académica realizada a un alumno</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenPrototipo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Evaluación académica realizada a los alumnos</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="Na8ff880e48d94f578a413d322e5bf039"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#asiste">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un alumno asiste a una clase</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#nombre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment>Nombre de una persona</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Instituto">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Entidad que agrupa a varios departamentos</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label>Ontología: institutos donde se midan las relaciones entre profesores, clases, alumnos y examenes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nombre>Juan</ont:nombre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase-Profesor1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor-Clase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:profesor>Profesor1</ont:profesor>
+    <ont:clase>Clase1</ont:clase>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3769e356f611464b981d1ae57a7caef9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#imparte"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno-Clase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Relación entre un alumno y una clase</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N06387082f7bc4495a50fc929b8df4fce">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#asiste_a"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na8ff880e48d94f578a413d322e5bf039">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#realiza_para"/>
+    <owl:hasValue>Alumno</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor-Clase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Relación entre un profesor y una clase</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#fecha_nacimiento">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment>Fecha de nacimiento de un alumno</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ha_tomado">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un alumno ha tomado un examen individual</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ExamenIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Persona encargada de impartir educación</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento"/>
+    <rdfs:subClassOf rdf:nodeID="N3769e356f611464b981d1ae57a7caef9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#ensena">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Un profesor enseña una clase</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Profesor"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Clase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Alumno-ExamenIndividual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Relación entre un alumno y un examen individual</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Instituto1">
+    <rdf:type rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Instituto"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Departamento">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Unidad académica que imparte educación</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/institutos_donde_se_midan_las_relaciones_entre_profesores,_clases,_alumnos_y_examenes#Instituto"/>
+  </rdf:Description>
+</rdf:RDF>

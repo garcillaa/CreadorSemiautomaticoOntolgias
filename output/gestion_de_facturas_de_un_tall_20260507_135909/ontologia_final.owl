@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ont="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#factura2">
+    <rdf:type rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:fechaArreglo>2022-01-02T00:00:00.000Z</ont:fechaArreglo>
+    <ont:facturaDe rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#pedro"/>
+    <ont:facturaPara rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#maria"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#arregla">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relación entre un mecanico y el coche que arregla</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <owl:inverseOf rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esArregladoPor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#facturaPara">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relación entre una factura y el cliente que la recibe</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente"/>
+    <owl:inverseOf rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#recibe"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N337c5af8d4864cc09eabb0e09cef0868">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N7249a06c258a4ae3bb310eb3e619a320"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd829b727a1a84c8a8c8fef0901099a5c">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esPoseidoPor"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Documento que registra una transacción</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Taller"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1f3626fcb88247239b5421b280a839e6">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>auto_inv_facturaDe</rdfs:label>
+    <rdfs:comment>Inferencia automática: facturaDe implica su inversa emite</rdfs:comment>
+    <swrl:body rdf:nodeID="N61daa3cfa0584186ae8df5f302ba8a06"/>
+    <swrl:head rdf:nodeID="N0bd42ecdb4964f3daef5b6c04de9f6d7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7c43f23cc21e47bab55452acb37ef49f">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N627f0a98afaa4c75bdfb030048d79028"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N28cf566734694c56adf5c682ca5ad678">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>auto_inv_arregla</rdfs:label>
+    <rdfs:comment>Inferencia automática: arregla implica su inversa esArregladoPor</rdfs:comment>
+    <swrl:body rdf:nodeID="N7c43f23cc21e47bab55452acb37ef49f"/>
+    <swrl:head rdf:nodeID="N709e88234a764f1cbceb9b342b08e699"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na06541692846482688bf8698e96850ad">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#recibe"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N15f8f2750cb1438498bdea273d89f8cb">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>auto_inv_posee</rdfs:label>
+    <rdfs:comment>Inferencia automática: posee implica su inversa esPoseidoPor</rdfs:comment>
+    <swrl:body rdf:nodeID="Ne870ff28a8c44eb8ab6e470b6fd83407"/>
+    <swrl:head rdf:nodeID="N86bd999a101e495d9dc9fe88805df24f"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#juan">
+    <rdf:type rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nombre>Juan</ont:nombre>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7249a06c258a4ae3bb310eb3e619a320">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#facturaPara"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N807762ad929d4fe9aa60a9a0510db0ce">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#arregla"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndd2e51c1c82941118ac0a2939d6834d9">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#emite"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf777bfd7b14647c7aec3d45ba9cd9276">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#posee"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#posee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relación entre un cliente y el coche que posee</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <owl:inverseOf rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esPoseidoPor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne870ff28a8c44eb8ab6e470b6fd83407">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="Nf777bfd7b14647c7aec3d45ba9cd9276"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label>Ontología: gestion de facturas de un taller de mecanica</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#facturaDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relación entre una factura y el mecanico que la emitió</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <owl:inverseOf rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#emite"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N627f0a98afaa4c75bdfb030048d79028">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#arregla"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d43b263e1e244fbb6e7b6a170bb1784">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="Na06541692846482688bf8698e96850ad"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Persona que realiza reparaciones</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Empleado"/>
+    <rdfs:subClassOf rdf:nodeID="N807762ad929d4fe9aa60a9a0510db0ce"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esPoseidoPor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7b024c479a2140ffae51a3caaa94c9ba">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>auto_inv_facturaPara</rdfs:label>
+    <rdfs:comment>Inferencia automática: facturaPara implica su inversa recibe</rdfs:comment>
+    <swrl:body rdf:nodeID="N337c5af8d4864cc09eabb0e09cef0868"/>
+    <swrl:head rdf:nodeID="N9d43b263e1e244fbb6e7b6a170bb1784"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N61daa3cfa0584186ae8df5f302ba8a06">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N9d0ca10a46144afd8d89dde2b211851e"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d0ca10a46144afd8d89dde2b211851e">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#facturaDe"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Vehículo que requiere reparación</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Empleado"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Taller"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#emite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Persona que contrata servicios</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Empleado"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Taller"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdfs:subClassOf rdf:nodeID="Nc1475f9bb6ed442ab1d7f190b10d98c5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Empleado">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Persona que trabaja en el taller</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Taller"/>
+    <owl:disjointWith rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#factura1">
+    <rdf:type rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:fechaArreglo>2022-01-01T00:00:00.000Z</ont:fechaArreglo>
+    <ont:facturaDe rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#juan"/>
+    <ont:facturaPara rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#maria"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0bd42ecdb4964f3daef5b6c04de9f6d7">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="Ndd2e51c1c82941118ac0a2939d6834d9"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#recibe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#maria">
+    <rdf:type rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Cliente"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nombre>Maria</ont:nombre>
+    <ont:posee>['coche1', 'coche2']</ont:posee>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc1475f9bb6ed442ab1d7f190b10d98c5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#posee"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#placa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment>Placa del coche</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N005e90b6109d430992a7f97ab370510b">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esArregladoPor"/>
+    <swrl:argument1 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y"/>
+    <swrl:argument2 rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_x"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N86bd999a101e495d9dc9fe88805df24f">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="Nd829b727a1a84c8a8c8fef0901099a5c"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#pedro">
+    <rdf:type rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ont:nombre>Pedro</ont:nombre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#fechaArreglo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment>Fecha de arreglo</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Factura"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Taller">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Lugar donde se realizan reparaciones</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N709e88234a764f1cbceb9b342b08e699">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N005e90b6109d430992a7f97ab370510b"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#esArregladoPor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Coche"/>
+    <rdfs:range rdf:resource="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#Mecanico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#var_y">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -14,7 +14,7 @@ def extract_json(text):
 def build_generation_prompt(domain, objective, questions, previous=None, feedback=None):
     questions_str = "\n".join(f"  - {q}" for q in questions)
 
-    base = f"""Actúa como un Ingeniero Ontológico Senior experto en OWL y RDF.
+    base = f"""Actúa como un Ingeniero Ontológico Senior experto en OWL, RDF y SWRL.
 
 Dominio: {domain}
 Objetivo: {objective}
@@ -30,11 +30,15 @@ Genera una ontología completa en JSON con EXACTAMENTE esta estructura:
       "superclase": "NombreClasePadre o null"
     }}
   }},
+  "clases_disjuntas": [
+    ["Clase1", "Clase2", "Clase3"]
+  ],
   "object_properties": [
     {{
       "nombre": "nombrePropiedad",
       "dominio": "ClaseDominio",
       "rango": "ClaseRango",
+      "inversa": "nombrePropiedadInversa o null",
       "descripcion": "Qué representa esta relación"
     }}
   ],
@@ -55,6 +59,14 @@ Genera una ontología completa en JSON con EXACTAMENTE esta estructura:
       "descripcion": "Explicación de la restricción"
     }}
   ],
+  "reglas_swrl": [
+    {{
+      "nombre": "NombreRegla",
+      "descripcion": "Qué infiere esta regla",
+      "antecedente": "Condiciones (ej: Alumno(?a) ^ cursaClase(?a, ?c) ^ Clase(?c))",
+      "consecuente": "Conclusión (ej: perteneceAInstituto(?a, ?i))"
+    }}
+  ],
   "instancias_ejemplo": [
     {{
       "nombre": "nombreInstancia",
@@ -64,11 +76,14 @@ Genera una ontología completa en JSON con EXACTAMENTE esta estructura:
   ]
 }}
 
-Requisitos:
+Requisitos OBLIGATORIOS:
 - Las clases deben formar una jerarquía coherente con superclases.
-- Debe haber suficientes object_properties para conectar todas las clases relevantes.
+- Las clases del mismo nivel jerárquico (hermanas) DEBEN declararse como disjuntas en "clases_disjuntas".
+- CADA object_property DEBE tener su propiedad inversa. Ejemplo: si existe "imparte" (Profesor->Clase), debe existir "esImpartidaPor" (Clase->Profesor), y en el campo "inversa" de "imparte" poner "esImpartidaPor" y viceversa.
 - Incluye datatype_properties para atributos literales (nombres, fechas, cantidades, etc.).
 - Las restricciones deben ser formales (tipo OWL) y relevantes para responder las preguntas.
+- Las reglas SWRL deben permitir inferir conocimiento nuevo a partir de los datos existentes. Escribe al menos una regla SWRL por cada pregunta de competencia que implique razonamiento transitivo o combinación de relaciones.
+- En las reglas SWRL usa EXACTAMENTE los nombres de clases y propiedades que hayas definido arriba.
 - Incluye al menos 3 instancias de ejemplo para verificar las preguntas de competencia.
 - Asegúrate de que CADA pregunta de competencia se pueda responder con la estructura generada.
 """

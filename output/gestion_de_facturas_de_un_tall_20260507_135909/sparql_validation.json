@@ -1,0 +1,18 @@
+[
+  {
+    "pregunta": "¿qué mecanico ha arreglado un coche con matricula especifica?",
+    "resultados": 0
+  },
+  {
+    "pregunta": "¿de quienes son los coches que ha arreglado un mecanico especifico?",
+    "resultados": 0
+  },
+  {
+    "pregunta": "¿que mecanicos trabajan en el taller?",
+    "resultado": "sin consulta"
+  },
+  {
+    "pregunta": "¿cuantos coches ha arreglado el taller (es decir, todos los coches que han arreglado todos los mecanicos)?",
+    "resultados": 0
+  }
+]

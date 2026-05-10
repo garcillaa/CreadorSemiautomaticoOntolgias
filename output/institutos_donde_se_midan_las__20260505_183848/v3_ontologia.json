@@ -1,0 +1,176 @@
+{
+  "clases": {
+    "Instituto": {
+      "definicion": "Entidad que agrupa a varios departamentos",
+      "superclase": null
+    },
+    "Departamento": {
+      "definicion": "Unidad académica que imparte educación",
+      "superclase": "Instituto"
+    },
+    "Profesor": {
+      "definicion": "Persona encargada de impartir educación",
+      "superclase": "Departamento"
+    },
+    "Alumno": {
+      "definicion": "Persona que recibe educación",
+      "superclase": "Departamento"
+    },
+    "Clase": {
+      "definicion": "Unidad de aprendizaje impartida por un profesor",
+      "superclase": "Departamento"
+    },
+    "Examen": {
+      "definicion": "Evaluación académica realizada a los alumnos",
+      "superclase": null,
+      "propiedades": {
+        "nota": {
+          "nombre": "nota",
+          "dominio": "Examen",
+          "rango": "xsd:integer",
+          "descripcion": "Nota del examen"
+        }
+      }
+    },
+    "Alumno-Examen": {
+      "definicion": "Relación entre un alumno y un examen",
+      "superclase": null
+    }
+  },
+  "object_properties": [
+    {
+      "nombre": "imparte",
+      "dominio": "Profesor",
+      "rango": "Clase",
+      "descripcion": "Un profesor imparte una clase"
+    },
+    {
+      "nombre": "asiste",
+      "dominio": "Alumno",
+      "rango": "Clase",
+      "descripcion": "Un alumno asiste a una clase"
+    },
+    {
+      "nombre": "realiza",
+      "dominio": "Profesor",
+      "rango": "Examen",
+      "descripcion": "Un profesor realiza un examen"
+    },
+    {
+      "nombre": "toma",
+      "dominio": "Alumno",
+      "rango": "Examen",
+      "descripcion": "Un alumno toma un examen"
+    },
+    {
+      "nombre": "enseña",
+      "dominio": "Profesor",
+      "rango": "Clase",
+      "descripcion": "Un profesor enseña una clase"
+    },
+    {
+      "nombre": "evalúa",
+      "dominio": "Profesor",
+      "rango": "Examen",
+      "descripcion": "Un profesor evalúa un examen"
+    },
+    {
+      "nombre": "ha_tomado",
+      "dominio": "Alumno",
+      "rango": "Examen",
+      "descripcion": "Un alumno ha tomado un examen"
+    }
+  ],
+  "datatype_properties": [
+    {
+      "nombre": "nombre",
+      "dominio": "Profesor | Alumno",
+      "rango": "xsd:string",
+      "descripcion": "Nombre de una persona"
+    },
+    {
+      "nombre": "fecha_nacimiento",
+      "dominio": "Alumno",
+      "rango": "xsd:dateTime",
+      "descripcion": "Fecha de nacimiento de un alumno"
+    }
+  ],
+  "restricciones": [
+    {
+      "clase": "Profesor",
+      "tipo": "someValuesFrom",
+      "propiedad": "imparte",
+      "valor": "Clase",
+      "descripcion": "Un profesor imparte una o varias clases"
+    },
+    {
+      "clase": "Alumno",
+      "tipo": "someValuesFrom",
+      "propiedad": "asiste",
+      "valor": "Clase",
+      "descripcion": "Un alumno asiste a una o varias clases"
+    },
+    {
+      "clase": "Examen",
+      "tipo": "hasValue",
+      "propiedad": "realiza",
+      "valor": "Profesor",
+      "descripcion": "Un examen es realizado por un profesor"
+    }
+  ],
+  "instancias_ejemplo": [
+    {
+      "nombre": "Instituto1",
+      "clase": "Instituto",
+      "propiedades": {}
+    },
+    {
+      "nombre": "Departamento1",
+      "clase": "Departamento",
+      "propiedades": {}
+    },
+    {
+      "nombre": "Profesor1",
+      "clase": "Profesor",
+      "propiedades": {
+        "nombre": "Juan"
+      }
+    },
+    {
+      "nombre": "Alumno1",
+      "clase": "Alumno",
+      "propiedades": {
+        "nombre": "Pepe",
+        "fecha_nacimiento": "1990-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "nombre": "Clase1",
+      "clase": "Clase",
+      "propiedades": {}
+    },
+    {
+      "nombre": "Examen1",
+      "clase": "Examen",
+      "propiedades": {
+        "nota": 8
+      }
+    },
+    {
+      "nombre": "Profesor-Alumno1",
+      "clase": "Alumno-Examen",
+      "propiedades": {
+        "alumno": "Alumno1",
+        "examen": "Examen1"
+      }
+    },
+    {
+      "nombre": "Clase-Profesor1",
+      "clase": "Clase-Profesor",
+      "propiedades": {
+        "clase": "Clase1",
+        "profesor": "Profesor1"
+      }
+    }
+  ]
+}

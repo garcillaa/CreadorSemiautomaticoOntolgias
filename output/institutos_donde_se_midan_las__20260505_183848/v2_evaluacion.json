@@ -1,0 +1,234 @@
+{
+  "estructural": {
+    "num_clases": 6,
+    "num_object_properties": 6,
+    "num_datatype_properties": 2,
+    "num_restricciones": 3,
+    "num_instancias": 8,
+    "tiene_jerarquia": true,
+    "clases_sin_propiedades": [],
+    "clases_aisladas": [
+      "Instituto",
+      "Departamento"
+    ]
+  },
+  "semantica": {
+    "evaluaciones": [
+      {
+        "pregunta": "¿Cuántos profesores imparten en una clase?",
+        "resuelta": true,
+        "sparql": "SELECT (COUNT(?profesor) AS ?cantidad) WHERE { ?clase a <http://ontology#Clase> ; ?profesor a <http://ontology#Profesor> . }",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Clase"
+        ],
+        "propiedades_necesarias": [
+          "imparte"
+        ],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "La ontología tiene la clase 'Clase' y la propiedad 'imparte', lo que permite responder esta pregunta."
+      },
+      {
+        "pregunta": "¿Cuántos alumnos hay en una clase?",
+        "resuelta": true,
+        "sparql": "SELECT (COUNT(?alumno) AS ?cantidad) WHERE { ?clase a <http://ontology#Clase> ; ?alumno a <http://ontology#Alumno> . }",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase"
+        ],
+        "propiedades_necesarias": [
+          "asiste"
+        ],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "La ontología tiene la clase 'Alumno' y la propiedad 'asiste', lo que permite responder esta pregunta."
+      },
+      {
+        "pregunta": "¿Qué examenes ha hecho un alumno con un profesor específico?",
+        "resuelta": false,
+        "sparql": "",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Examen"
+        ],
+        "propiedades_necesarias": [
+          "realiza",
+          "toma"
+        ],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña",
+          "realiza",
+          "toma"
+        ],
+        "elementos_faltantes": [
+          "Una relación entre Alumno y Examen para representar que un alumno ha tomado un examen"
+        ],
+        "justificacion": "La ontología no tiene una relación explícita entre Alumno y Examen, lo que impide responder esta pregunta."
+      },
+      {
+        "pregunta": "¿Qué notas ha sacado de media la clase con un profesor en específico?",
+        "resuelta": false,
+        "sparql": "",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase"
+        ],
+        "propiedades_necesarias": [
+          "enseña",
+          "asiste"
+        ],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [
+          "Una relación entre Clase y nota para representar el rendimiento de una clase"
+        ],
+        "justificacion": "La ontología no tiene una relación explícita entre Clase y nota, lo que impide responder esta pregunta."
+      },
+      {
+        "pregunta": "¿A qué instituto pertenece un alumno?",
+        "resuelta": true,
+        "sparql": "SELECT ?instituto WHERE { ?alumno a <http://ontology#Alumno> ; ?instituto a <http://ontology#Instituto> . }",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno"
+        ],
+        "propiedades_necesarias": [],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "La ontología tiene la clase 'Instituto' y la relación entre Alumno e Instituto, lo que permite responder esta pregunta."
+      },
+      {
+        "pregunta": "¿Cuántas clases hay en un instituto?",
+        "resuelta": true,
+        "sparql": "SELECT (COUNT(?clase) AS ?cantidad) WHERE { ?instituto a <http://ontology#Instituto> ; ?clase a <http://ontology#Clase> . }",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase"
+        ],
+        "propiedades_necesarias": [],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "La ontología tiene la clase 'Clase' y la relación entre Instituto y Clase, lo que permite responder esta pregunta."
+      },
+      {
+        "pregunta": "¿Pueden dos profesores impartir a diferentes clases?",
+        "resuelta": true,
+        "sparql": "SELECT ?clase1 ?clase2 WHERE { ?profesor1 a <http://ontology#Profesor> ; ?profesor2 a <http://ontology#Profesor> ; ?clase1 a <http://ontology#Clase> ; ?clase2 a <http://ontology#Clase> ; ?profesor1 ?imparte ?clase1 ; ?profesor2 ?imparte ?clase2 . }",
+        "clases_necesarias": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase"
+        ],
+        "propiedades_necesarias": [
+          "imparte"
+        ],
+        "clases_presentes": [
+          "Instituto",
+          "Departamento",
+          "Profesor",
+          "Alumno",
+          "Clase",
+          "Examen"
+        ],
+        "propiedades_presentes": [
+          "imparte",
+          "asiste",
+          "enseña"
+        ],
+        "elementos_faltantes": [],
+        "justificacion": "La ontología tiene la propiedad 'imparte' y las clases 'Profesor' y 'Clase', lo que permite responder esta pregunta."
+      }
+    ],
+    "puntuacion_global": 0.6,
+    "resumen": "La ontología tiene una buena cobertura de preguntas, pero falta una relación explícita entre Alumno y Examen para resolver algunas preguntas."
+  },
+  "puntuacion_competencia": 0.6
+}

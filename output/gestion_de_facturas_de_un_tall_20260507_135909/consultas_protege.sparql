@@ -1,0 +1,66 @@
+# Consultas SPARQL para la ontología: gestion de facturas de un taller de mecanica
+# Generadas automáticamente - copiar/pegar en Protégé (SPARQL Query tab)
+# Namespace: http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#
+#
+# INSTRUCCIONES PARA PROTÉGÉ:
+#   1. Abrir el fichero .owl en Protégé
+#   2. Activar el reasoner: Reasoner > HermiT > Start reasoner
+#   3. Ir a la pestaña SPARQL Query (si no aparece: Window > Tabs > SPARQL Query)
+#   4. Copiar cada consulta y ejecutarla
+#
+# CONSULTA GENERAL: Ver todas las instancias y sus clases
+
+PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?instancia ?clase
+WHERE {
+  ?instancia rdf:type ?clase .
+  ?instancia rdf:type owl:NamedIndividual .
+  FILTER (?clase != owl:NamedIndividual)
+}
+
+############################################################
+# [RESUELTA] ¿qué mecanico ha arreglado un coche con matricula especifica?
+############################################################
+
+PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?mecanico ?coche ?val_placa
+WHERE {
+  ?mecanico rdf:type ont:Mecanico .
+  ?coche rdf:type ont:Coche .
+  ?mecanico ont:arregla ?coche .
+  ?coche ont:placa ?val_placa .
+}
+
+############################################################
+# [RESUELTA] ¿de quienes son los coches que ha arreglado un mecanico especifico?
+############################################################
+
+PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?mecanico ?coche
+WHERE {
+  ?mecanico rdf:type ont:Mecanico .
+  ?coche rdf:type ont:Coche .
+  ?mecanico ont:arregla ?coche .
+  ?cliente ont:posee ?coche .
+}
+
+############################################################
+# [RESUELTA] ¿cuantos coches ha arreglado el taller (es decir, todos los coches que han arreglado todos los mecanicos)?
+############################################################
+
+PREFIX ont: <http://example.org/ontology/gestion_de_facturas_de_un_taller_de_mecanica#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?taller ?mecanico ?coche
+WHERE {
+  ?taller rdf:type ont:Taller .
+  ?mecanico rdf:type ont:Mecanico .
+  ?coche rdf:type ont:Coche .
+  ?mecanico ont:arregla ?coche .
+  ?factura ont:facturaDe ?mecanico .
+}

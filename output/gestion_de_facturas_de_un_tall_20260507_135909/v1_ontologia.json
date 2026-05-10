@@ -1,0 +1,129 @@
+{
+  "clases": {
+    "Cliente": {
+      "definicion": "Persona que contrata servicios",
+      "superclase": null
+    },
+    "Mecanico": {
+      "definicion": "Persona que realiza reparaciones",
+      "superclase": "Empleado"
+    },
+    "Empleado": {
+      "definicion": "Persona que trabaja en el taller",
+      "superclase": null
+    },
+    "Taller": {
+      "definicion": "Lugar donde se realizan reparaciones",
+      "superclase": null
+    },
+    "Coche": {
+      "definicion": "Vehículo que requiere reparación",
+      "superclase": null
+    }
+  },
+  "clases_disjuntas": [
+    [
+      "Mecanico",
+      "Cliente"
+    ]
+  ],
+  "object_properties": [
+    {
+      "nombre": "arregla",
+      "dominio": "Mecanico",
+      "rango": "Coche",
+      "inversa": "esArregladoPor",
+      "descripcion": "Relación entre un mecanico y el coche que arregla"
+    },
+    {
+      "nombre": "posee",
+      "dominio": "Cliente",
+      "rango": "Coche",
+      "inversa": "esPoseidoPor",
+      "descripcion": "Relación entre un cliente y el coche que posee"
+    }
+  ],
+  "datatype_properties": [
+    {
+      "nombre": "placa",
+      "dominio": "Coche",
+      "rango": "xsd:string",
+      "descripcion": "Placa del coche"
+    },
+    {
+      "nombre": "fechaArreglo",
+      "dominio": "Factura",
+      "rango": "xsd:dateTime",
+      "descripcion": "Fecha de arreglo"
+    }
+  ],
+  "restricciones": [
+    {
+      "clase": "Mecanico",
+      "tipo": "someValuesFrom",
+      "propiedad": "arregla",
+      "valor": "Coche",
+      "descripcion": "Un mecanico puede arreglar varios coches"
+    },
+    {
+      "clase": "Cliente",
+      "tipo": "someValuesFrom",
+      "propiedad": "posee",
+      "valor": "Coche",
+      "descripcion": "Un cliente puede poseer varios coches"
+    }
+  ],
+  "reglas_swrl": [
+    {
+      "nombre": "mecanicoQueArreglaCoche",
+      "descripcion": "Determinar el mecanico que arregla un coche con matricula especifica",
+      "antecedente": "Coche(?c) ^ placa(?c, ?p) ^ Mecanico(?m) ^ arregla(?m, ?c)",
+      "consecuente": "?m"
+    },
+    {
+      "nombre": "cochesDeMecanico",
+      "descripcion": "Determinar los coches que ha arreglado un mecanico especifico",
+      "antecedente": "Mecanico(?m) ^ arregla(?m, ?c)",
+      "consecuente": "?c"
+    },
+    {
+      "nombre": "mecanicosDelTaller",
+      "descripcion": "Determinar los mecanicos que trabajan en el taller",
+      "antecedente": "Mecanico(?m) ^ Empleado(?e) ^ Taller(?t) ^ arregla(?e, ?c)",
+      "consecuente": "?m"
+    },
+    {
+      "nombre": "cochesArregladosPorTaller",
+      "descripcion": "Determinar cuantos coches ha arreglado el taller (es decir, todos los coches que han arreglado todos los mecanicos)",
+      "antecedente": "Mecanico(?m) ^ arregla(?m, ?c) ^ Taller(?t) ^ Empleado(?e) ^ arregla(?e, ?c)",
+      "consecuente": "(?c)"
+    }
+  ],
+  "instancias_ejemplo": [
+    {
+      "nombre": "juan",
+      "clase": "Mecanico",
+      "propiedades": {
+        "nombre": "Juan"
+      }
+    },
+    {
+      "nombre": "pedro",
+      "clase": "Mecanico",
+      "propiedades": {
+        "nombre": "Pedro"
+      }
+    },
+    {
+      "nombre": "maria",
+      "clase": "Cliente",
+      "propiedades": {
+        "nombre": "Maria",
+        "posee": [
+          "coche1",
+          "coche2"
+        ]
+      }
+    }
+  ]
+}
